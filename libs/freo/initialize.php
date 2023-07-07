@@ -21,9 +21,6 @@ ini_set('session.use_only_cookies', 0);
 ini_set('session.auto_start', 0);
 ini_set('session.cache_limiter', 'none');
 
-if (ini_get('register_globals')) {
-	exit('Fatal error');
-}
 if (ini_get('magic_quotes_gpc')) {
 	$_GET     = freo_stripslashes($_GET);
 	$_POST    = freo_stripslashes($_POST);
