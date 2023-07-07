@@ -9,7 +9,6 @@
 *********************************************************************/
 
 ini_set('default_charset', 'UTF-8');
-ini_set('mbstring.internal_encoding', 'UTF-8');
 ini_set('mbstring.language', 'Japanese');
 ini_set('mbstring.input_encoding', 'pass');
 ini_set('mbstring.output_encoding', 'pass');
