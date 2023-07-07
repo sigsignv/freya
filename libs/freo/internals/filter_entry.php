@@ -43,5 +43,3 @@ function freo_filter_entry($mode, $entries)
 
 	return $filters;
 }
-
-?>

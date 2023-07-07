@@ -184,5 +184,3 @@ foreach (ini_get_all() as $key => $value) {
 echo "</table>\n";
 echo "</body>\n";
 echo "</html>\n";
-
-?>

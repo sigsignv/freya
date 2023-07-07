@@ -92,5 +92,3 @@ function freo_validate_option($mode, $input)
 
 	return $errors;
 }
-
-?>

@@ -90,5 +90,3 @@ define('FREO_MOBILE_FILE_WIDTH', 240);
 
 //携帯での画像の最大縦幅
 define('FREO_MOBILE_FILE_HEIGHT', 480);
-
-?>

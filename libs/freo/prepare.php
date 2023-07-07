@@ -411,5 +411,3 @@ function freo_setup_error($message)
 
 	exit;
 }
-
-?>

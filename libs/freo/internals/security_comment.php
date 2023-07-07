@@ -51,5 +51,3 @@ function freo_security_comment($mode, $comments)
 
 	return $securities;
 }
-
-?>

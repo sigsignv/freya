@@ -60,5 +60,3 @@ function freo_validate_filter($mode, $input)
 
 	return $errors;
 }
-
-?>

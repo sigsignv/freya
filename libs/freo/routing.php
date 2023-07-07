@@ -34,5 +34,3 @@ function freo_routing_execute()
 
 	return;
 }
-
-?>

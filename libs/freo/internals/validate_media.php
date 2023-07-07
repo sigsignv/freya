@@ -106,5 +106,3 @@ function freo_validate_media($mode, $input)
 
 	return $errors;
 }
-
-?>

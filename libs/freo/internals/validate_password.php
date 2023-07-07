@@ -50,5 +50,3 @@ function freo_validate_password($mode, $input)
 
 	return $errors;
 }
-
-?>

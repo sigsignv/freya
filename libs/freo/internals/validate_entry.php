@@ -148,5 +148,3 @@ function freo_validate_entry($mode, $input)
 
 	return $errors;
 }
-
-?>

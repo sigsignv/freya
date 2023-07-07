@@ -243,5 +243,3 @@ function freo_associate_entry_delete($entry_id)
 
 	return;
 }
-
-?>

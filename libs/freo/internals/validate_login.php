@@ -34,5 +34,3 @@ function freo_validate_login($mode, $input)
 
 	return $errors;
 }
-
-?>

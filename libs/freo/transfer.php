@@ -69,5 +69,3 @@ function freo_transfer_form($data)
 
 	return $data;
 }
-
-?>

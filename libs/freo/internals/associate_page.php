@@ -200,5 +200,3 @@ function freo_associate_page_delete($page_id)
 
 	return;
 }
-
-?>

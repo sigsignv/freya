@@ -60,5 +60,3 @@ function freo_validate_group($mode, $input)
 
 	return $errors;
 }
-
-?>

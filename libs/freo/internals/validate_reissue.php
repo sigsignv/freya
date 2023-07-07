@@ -37,5 +37,3 @@ function freo_validate_reissue($mode, $input)
 
 	return $errors;
 }
-
-?>
