@@ -175,5 +175,3 @@ function freo_display_page_menu()
 
 	return;
 }
-
-?>

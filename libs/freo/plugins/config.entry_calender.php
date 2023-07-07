@@ -16,5 +16,3 @@ define('FREO_PLUGIN_ENTRY_CALENDER_VERSION', '1.1.0');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_ENTRY_CALENDER_LOAD_DISPLAY', 'default,entry,category,view');
-
-?>

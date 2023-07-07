@@ -19,5 +19,3 @@ define('FREO_PLUGIN_PAGE_CONVERT_LOAD_BEGIN', 'admin/page_form');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_PAGE_CONVERT_LOAD_DISPLAY', 'admin/page_form');
-
-?>

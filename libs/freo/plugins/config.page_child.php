@@ -16,5 +16,3 @@ define('FREO_PLUGIN_PAGE_CHILD_VERSION', '1.3.0');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_PAGE_CHILD_LOAD_DISPLAY', 'page');
-
-?>

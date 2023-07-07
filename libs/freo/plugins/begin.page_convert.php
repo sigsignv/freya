@@ -32,5 +32,3 @@ function freo_begin_page_convert()
 
 	return;
 }
-
-?>

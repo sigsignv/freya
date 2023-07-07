@@ -13,5 +13,3 @@ define('FREO_PLUGIN_PAGE_MENU_NAME', 'ページメニュー表示');
 
 //プラグインのバージョン
 define('FREO_PLUGIN_PAGE_MENU_VERSION', '1.3.1');
-
-?>

@@ -32,5 +32,3 @@ function freo_begin_information_convert()
 
 	return;
 }
-
-?>

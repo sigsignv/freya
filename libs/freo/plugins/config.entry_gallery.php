@@ -19,5 +19,3 @@ define('FREO_PLUGIN_ENTRY_GALLERY_LOAD_PAGE', 'entry_gallery');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_ENTRY_GALLERY_LOAD_DISPLAY', 'default,entry,category,view');
-
-?>

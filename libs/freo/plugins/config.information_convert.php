@@ -19,5 +19,3 @@ define('FREO_PLUGIN_INFORMATION_CONVERT_LOAD_BEGIN', 'admin/information_form');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_INFORMATION_CONVERT_LOAD_DISPLAY', 'admin/information_form');
-
-?>

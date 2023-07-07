@@ -36,5 +36,3 @@ function freo_display_page_shortcut()
 
 	return;
 }
-
-?>
