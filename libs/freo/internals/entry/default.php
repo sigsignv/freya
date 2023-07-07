@@ -10,5 +10,3 @@
 
 //外部ファイル読み込み
 require_once FREO_MAIN_DIR . 'freo/internals/default/default.php';
-
-?>

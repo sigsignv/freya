@@ -98,5 +98,3 @@ function freo_security_page($mode, $pages, $exceptions = array())
 
 	return $securities;
 }
-
-?>

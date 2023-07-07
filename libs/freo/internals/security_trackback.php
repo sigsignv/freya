@@ -47,5 +47,3 @@ function freo_security_trackback($mode, $trackbacks)
 
 	return $securities;
 }
-
-?>

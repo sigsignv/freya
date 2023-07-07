@@ -85,5 +85,3 @@ freo_execute();
 
 //プラグイン実行
 freo_plugin('end');
-
-?>

@@ -166,5 +166,3 @@ function freo_display_entry_calender()
 
 	return;
 }
-
-?>

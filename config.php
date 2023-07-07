@@ -129,5 +129,3 @@ define('FREO_JS_DIR', 'js/');
 
 //パーミッション自動設定の利用(true ... 利用する / false ... 利用しない)
 define('FREO_PERMISSION_MODE', true);
-
-?>

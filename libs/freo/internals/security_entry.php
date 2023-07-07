@@ -97,5 +97,3 @@ function freo_security_entry($mode, $entries, $exceptions = array())
 
 	return $securities;
 }
-
-?>

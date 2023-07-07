@@ -71,5 +71,3 @@ function freo_filter_media($mode, $medias)
 
 	return $filters;
 }
-
-?>

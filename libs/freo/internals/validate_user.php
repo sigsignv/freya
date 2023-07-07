@@ -95,5 +95,3 @@ function freo_validate_user($mode, $input)
 
 	return $errors;
 }
-
-?>

@@ -19,5 +19,3 @@ define('FREO_PLUGIN_EXPORT_ADMIN', 'export/admin');
 
 //pageファイルの読み込み設定
 define('FREO_PLUGIN_EXPORT_LOAD_PAGE', 'export');
-
-?>

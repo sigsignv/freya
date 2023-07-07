@@ -328,5 +328,3 @@ function freo_page_entry_gallery()
 
 	return;
 }
-
-?>

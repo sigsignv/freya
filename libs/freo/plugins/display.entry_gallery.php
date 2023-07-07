@@ -230,5 +230,3 @@ function freo_display_entry_gallery()
 
 	return;
 }
-
-?>

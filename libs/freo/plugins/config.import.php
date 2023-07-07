@@ -19,5 +19,3 @@ define('FREO_PLUGIN_IMPORT_ADMIN', 'import/admin');
 
 //pageファイルの読み込み設定
 define('FREO_PLUGIN_IMPORT_LOAD_PAGE', 'import');
-
-?>

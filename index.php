@@ -28,5 +28,3 @@ require_once 'config.php';
 require_once FREO_MAIN_DIR . 'freo/freo.php';
 
 exit;
-
-?>

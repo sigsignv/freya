@@ -43,5 +43,3 @@ function freo_filter_page($mode, $pages)
 
 	return $filters;
 }
-
-?>

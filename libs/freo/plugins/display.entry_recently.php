@@ -197,5 +197,3 @@ function freo_display_entry_recently()
 
 	return;
 }
-
-?>

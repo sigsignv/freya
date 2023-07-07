@@ -49,5 +49,3 @@ function freo_validate_comment($mode, $input)
 
 	return $errors;
 }
-
-?>

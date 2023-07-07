@@ -95,5 +95,3 @@ function freo_security_media($mode, $medias)
 
 	return $securities;
 }
-
-?>

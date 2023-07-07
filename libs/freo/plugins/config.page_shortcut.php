@@ -13,5 +13,3 @@ define('FREO_PLUGIN_PAGE_SHORTCUT_NAME', 'ページショートカット表示')
 
 //プラグインのバージョン
 define('FREO_PLUGIN_PAGE_SHORTCUT_VERSION', '1.0.0');
-
-?>

@@ -37,5 +37,3 @@ function freo_validate_information($mode, $input)
 
 	return $errors;
 }
-
-?>

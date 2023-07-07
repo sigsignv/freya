@@ -16,5 +16,3 @@ define('FREO_PLUGIN_ENTRY_LINK_VERSION', '1.2.0');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_ENTRY_LINK_LOAD_DISPLAY', 'view');
-
-?>

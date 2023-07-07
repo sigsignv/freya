@@ -46,5 +46,3 @@ function freo_validate_setup($mode, $input)
 
 	return $errors;
 }
-
-?>

@@ -75,5 +75,3 @@ function freo_associate_media_get($medias)
 
 	return $associates;
 }
-
-?>

@@ -16,5 +16,3 @@ define('FREO_PLUGIN_ENTRY_RECENTLY_VERSION', '1.3.0');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_ENTRY_RECENTLY_LOAD_DISPLAY', 'default,entry,category,view');
-
-?>

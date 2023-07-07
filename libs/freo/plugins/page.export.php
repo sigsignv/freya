@@ -164,5 +164,3 @@ function freo_page_export_default()
 
 	return;
 }
-
-?>

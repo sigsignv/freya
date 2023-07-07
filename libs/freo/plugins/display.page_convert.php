@@ -40,5 +40,3 @@ function freo_display_page_convert()
 
 	return;
 }
-
-?>

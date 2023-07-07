@@ -134,5 +134,3 @@ function freo_display_comment_recently()
 
 	return;
 }
-
-?>

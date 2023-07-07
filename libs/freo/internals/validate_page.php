@@ -173,5 +173,3 @@ function freo_validate_page($mode, $input)
 
 	return $errors;
 }
-
-?>

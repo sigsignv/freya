@@ -110,5 +110,3 @@ function freo_associate_user_delete($user_id)
 
 	return;
 }
-
-?>

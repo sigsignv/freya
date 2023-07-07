@@ -43,5 +43,3 @@ function freo_main()
 
 	return;
 }
-
-?>

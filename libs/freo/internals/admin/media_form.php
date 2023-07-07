@@ -328,5 +328,3 @@ function freo_main_get_dir($path)
 
 	return $files;
 }
-
-?>

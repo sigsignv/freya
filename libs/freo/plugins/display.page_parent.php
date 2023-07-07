@@ -142,5 +142,3 @@ function freo_display_page_parent()
 
 	return;
 }
-
-?>

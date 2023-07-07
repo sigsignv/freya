@@ -16,5 +16,3 @@ define('FREO_PLUGIN_COMMENT_COUNT_VERSION', '1.0.0');
 
 //displayファイルの読み込み設定
 define('FREO_PLUGIN_COMMENT_COUNT_LOAD_DISPLAY', 'default,entry,category');
-
-?>

@@ -63,5 +63,3 @@ function freo_validate_trackback($mode, $input)
 
 	return $errors;
 }
-
-?>

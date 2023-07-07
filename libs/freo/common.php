@@ -2856,5 +2856,3 @@ function freo_trackback($trackback_url, $title, $url, $excerpt, $blog_name, $hea
 
 	return array(true, null);
 }
-
-?>

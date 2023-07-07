@@ -82,5 +82,3 @@ function freo_validate_category($mode, $input)
 
 	return $errors;
 }
-
-?>

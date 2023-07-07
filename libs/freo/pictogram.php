@@ -93,5 +93,3 @@ function freo_pictogram_unescape($data, $type = 'html')
 		return preg_replace('/\[E:([^\]]+)\]/e', '"[e:".basename("$1",".gif")."]"', $data);
 	}
 }
-
-?>
