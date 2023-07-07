@@ -1,6 +1,18 @@
-# freo
-CMS FOR CREATER
+# freya
 
-freo（フレオ）は、PHP5で作成された日記ツール＆サイト管理ツールです。  
-主にイラスト・漫画・小説などの創作サイトに利用されることを想定しています。  
-閲覧制限機能により、特定の相手のみに一部の記事を公開することもできます。  
+freya は [freo](https://github.com/refirio/freo) に現代的なアーキテクチャを導入して改善を試みるプロジェクトです。
+
+永遠のα版のため、利用はオススメしません。
+
+## Requirement
+
+- PHP 7.2
+
+## Author
+
+- Original Author: refirio / ないと
+- Modifier: Sigsign <<sig@signote.cc>>
+
+## License
+
+- GPLv2
