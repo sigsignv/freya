@@ -31,3 +31,5 @@ Thumbs.db
 /files/temporaries/page_thumbnails/
 /files/temporaries/plugins/
 /templates_c/
+
+/vendor/

@@ -1,0 +1,19 @@
+{
+    "name": "freya/freya",
+    "license": "GPLv2",
+    "autoload": {
+        "psr-4": {
+            "Freya\\": "src/"
+        }
+    },
+    "authors": [
+        {
+            "name": "refirio"
+        },
+        {
+            "name": "Sigsign",
+            "email": "sig@signote.cc"
+        }
+    ],
+    "require": {}
+}
