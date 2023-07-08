@@ -26,7 +26,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         openssh-client \
         patch \
         php-cli \
+        php-sqlite3 \
         publicsuffix \
+        sqlite3 \
         sudo \
         unzip \
         vim-nox \
