@@ -15,8 +15,8 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-azuretools.vscode-docker", 	// Docker
-				"EditorConfig.EditorConfig"		// EditorConfig for VS Code
+				"ms-azuretools.vscode-docker",  // Docker
+				"EditorConfig.EditorConfig"     // EditorConfig for VS Code
 			]
 		}
 	}
