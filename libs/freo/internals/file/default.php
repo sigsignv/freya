@@ -406,12 +406,6 @@ function freo_main()
 	//出力ファイル名決定
 	$output = $filename;
 
-	if ($flag) {
-		if ($freo->agent['career'] == 'docomo' and preg_match('/\.png$/i', $filename)) {
-			$output = basename($filename) . '.gif';
-		}
-	}
-
 	//データ出力
 	header('Content-Type: ' . freo_mime($output));
 /*
