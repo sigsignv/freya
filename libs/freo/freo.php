@@ -27,10 +27,6 @@ if (FREO_ROUTING_MODE) {
 if (FREO_TRANSFER_MODE) {
 	require_once FREO_MAIN_DIR . 'freo/transfer.php';
 }
-if (FREO_PICTOGRAM_MODE) {
-	require_once FREO_MAIN_DIR . 'HTML/Emoji.php';
-	require_once FREO_MAIN_DIR . 'freo/pictogram.php';
-}
 
 //セッション開始
 freo_session();

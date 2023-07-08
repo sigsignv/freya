@@ -182,12 +182,6 @@ function freo_normalize()
 {
 	global $freo;
 
-	//絵文字コード統一
-	if (FREO_PICTOGRAM_MODE) {
-		$_GET  = freo_pictogram_unify($_GET);
-		$_POST = freo_pictogram_unify($_POST);
-	}
-
 	//不正データ削除
 	$_GET     = freo_sanitize($_GET);
 	$_POST    = freo_sanitize($_POST);
@@ -1144,9 +1138,6 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 	}
 	if (FREO_TRANSFER_MODE) {
 		$output = freo_transfer_execute($output);
-	}
-	if (FREO_PICTOGRAM_MODE) {
-		$output = freo_pictogram_convert($output);
 	}
 
 	echo $output;
@@ -2352,11 +2343,6 @@ function freo_mail($to, $subject, $message, $headers = array(), $files = array()
 
 	$subject = mb_convert_kana(freo_unify($subject), 'KV', 'UTF-8');
 	$message = mb_convert_kana(freo_unify($message), 'KV', 'UTF-8');
-
-	if (FREO_PICTOGRAM_MODE) {
-		$subject = freo_pictogram_except($subject);
-		$message = freo_pictogram_except($message);
-	}
 
 	//エンコード
 	$subject = mb_convert_encoding($subject, 'JIS', 'UTF-8');

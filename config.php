@@ -91,14 +91,6 @@ define('FREO_IMAGEMAGICK_MODE', false);
 //ImageMagickのパス
 define('FREO_IMAGEMAGICK_PATH', '/usr/bin/convert');
 
-/********* 絵文字変換の設定 *****************************************/
-
-//絵文字の変換(true ... 変換する / false ... 変換しない)
-define('FREO_PICTOGRAM_MODE', false);
-
-//画像格納ディレクトリのURL
-define('FREO_PICTOGRAM_IMAGE_URL', 'http://www.example.com/images/pictograms/');
-
 /********* パスの設定 **********************************************/
 
 //メインプログラムファイル格納ディレクトリ
