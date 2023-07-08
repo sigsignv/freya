@@ -138,16 +138,6 @@ function freo_agent()
 	}
 	if (isset($_SESSION['freo']['agent']['career'])) {
 		$freo->agent['career'] = $_SESSION['freo']['agent']['career'];
-	} elseif (preg_match('/DoCoMo/', $_SERVER['HTTP_USER_AGENT'])) {
-		$freo->agent['career'] = 'docomo';
-	} elseif (preg_match('/(SoftBank|Vodafone)/', $_SERVER['HTTP_USER_AGENT'])) {
-		$freo->agent['career'] = 'softbank';
-	} elseif (preg_match('/KDDI/', $_SERVER['HTTP_USER_AGENT'])) {
-		$freo->agent['career'] = 'au';
-	} elseif (preg_match('/WILLCOM/', $_SERVER['HTTP_USER_AGENT'])) {
-		$freo->agent['career'] = 'willcom';
-	} elseif (preg_match('/emobile/', $_SERVER['HTTP_USER_AGENT'])) {
-		$freo->agent['career'] = 'emobile';
 	} else {
 		$freo->agent['career'] = null;
 	}
@@ -173,45 +163,16 @@ function freo_agent()
 	}
 
 	//コンテンツタイプ取得
-	if ($freo->agent['career'] == 'au' or $freo->agent['type'] != 'mobile') {
-		$freo->agent['content'] = 'text/html';
-	} else {
-		$freo->agent['content'] = 'application/xhtml+xml';
-	}
+	$freo->agent['content'] = 'application/xhtml+xml';
 
 	//文字コード取得
-	if ($freo->agent['career'] == 'softbank' or $freo->agent['type'] != 'mobile') {
-		$freo->agent['charset'] = 'utf-8';
-	} else {
-		$freo->agent['charset'] = 'sjis';
-	}
+	$freo->agent['charset'] = 'utf-8';
 
 	//フォームメソッド取得
-	if ($freo->agent['career'] == 'au') {
-		$freo->agent['method'] = 'get';
-	} else {
-		$freo->agent['method'] = 'post';
-	}
+	$freo->agent['method'] = 'post';
 
 	//固体識別情報取得
-	if (isset($_SERVER['HTTP_X_DCMGUID'])) {
-		$freo->agent['serial'] = $_SERVER['HTTP_X_DCMGUID'];
-	} elseif (isset($_SERVER['HTTP_X_UP_SUBNO'])) {
-		$freo->agent['serial'] = $_SERVER['HTTP_X_UP_SUBNO'];
-	} elseif (isset($_SERVER['HTTP_X_JPHONE_UID'])) {
-		$freo->agent['serial'] = $_SERVER['HTTP_X_JPHONE_UID'];
-	} else {
-		$freo->agent['serial'] = null;
-	}
-
-	/* キャリアをIPアドレスで確認 */
-	if ($freo->agent['serial']) {
-		$career = freo_ip2career();
-
-		if ($career != 'docomo' and $career != 'softbank' and $career != 'au') {
-			$freo->agent['serial'] = null;
-		}
-	}
+	$freo->agent['serial'] = null;
 
 	return;
 }
@@ -220,12 +181,6 @@ function freo_agent()
 function freo_normalize()
 {
 	global $freo;
-
-	//絵文字コード統一
-	if (FREO_PICTOGRAM_MODE) {
-		$_GET  = freo_pictogram_unify($_GET);
-		$_POST = freo_pictogram_unify($_POST);
-	}
 
 	//不正データ削除
 	$_GET     = freo_sanitize($_GET);
@@ -1183,9 +1138,6 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 	}
 	if (FREO_TRANSFER_MODE) {
 		$output = freo_transfer_execute($output);
-	}
-	if (FREO_PICTOGRAM_MODE) {
-		$output = freo_pictogram_convert($output);
 	}
 
 	echo $output;
@@ -2378,336 +2330,6 @@ function freo_setcookie($name, $value, $expire = 0, $path = '', $domain = '', $s
 /* キャリア判別 */
 function freo_ip2career($ip = null)
 {
-	global $freo;
-
-	if ($ip == null) {
-		$ip = $_SERVER['REMOTE_ADDR'];
-	}
-
-	$n = sprintf('%u', ip2long($ip));
-
-	if ($n < 1914044160) {
-		if ($n < 1868151808) {
-			if ($n < 1036427264) {
-				if ($n < 1036419072) {
-					if ($n < 1031078144) {
-						if ($n >= 998712960 and $n <= 998713087) {
-							return 'au';
-						}
-					} elseif ($n <= 1031078159) {
-						return 'au';
-					} else {
-						if ($n >= 1031078432 and $n <= 1031078447) {
-							return 'au';
-						}
-					}
-				} elseif ($n <= 1036421631) {
-					return 'willcom';
-				} else {
-					if ($n < 1036421888) {
-						if ($n >= 1036421732 and $n <= 1036421735) {
-							return 'willcom';
-						}
-					} elseif ($n <= 1036421895) {
-						return 'willcom';
-					} else {
-						if ($n < 1036422016) {
-						} elseif ($n <= 1036422063) {
-							return 'willcom';
-						} else {
-							if ($n >= 1036422144 and $n <= 1036423167) {
-								return 'willcom';
-							}
-						}
-					}
-				}
-			} elseif ($n <= 1036429055) {
-				return 'willcom';
-			} else {
-				if ($n < 1036803072) {
-					if ($n < 1036449792) {
-						if ($n >= 1036429312 and $n <= 1036431359) {
-							return 'willcom';
-						}
-					} elseif ($n <= 1036451839) {
-						return 'willcom';
-					} else {
-						if ($n < 1036779520) {
-						} elseif ($n <= 1036779775) {
-							return 'willcom';
-						} else {
-							if ($n >= 1036780032 and $n <= 1036781439) {
-								return 'willcom';
-							}
-						}
-					}
-				} elseif ($n <= 1036804095) {
-					return 'willcom';
-				} else {
-					if ($n < 1867943552) {
-						if ($n >= 1867943232 and $n <= 1867943487) {
-							return 'au';
-						}
-					} elseif ($n <= 1867943743) {
-						return 'au';
-					} else {
-						if ($n < 1867943872) {
-						} elseif ($n <= 1867943935) {
-							return 'au';
-						} else {
-							if ($n >= 1867944704 and $n <= 1867944735) {
-								return 'au';
-							}
-						}
-					}
-				}
-			}
-		} elseif ($n <= 1868152831) {
-			return 'docomo';
-		} else {
-			if ($n < 1913928192) {
-				if ($n < 1913926656) {
-					if ($n < 1913925888) {
-						if ($n >= 1913925888 and $n <= 1913926143) {
-							return 'willcom';
-						}
-					} elseif ($n <= 1913926399) {
-						return 'willcom';
-					} else {
-						if ($n < 1913926144) {
-						} elseif ($n <= 1913926655) {
-							return 'willcom';
-						} else {
-							if ($n >= 1913926400 and $n <= 1913926911) {
-								return 'willcom';
-							}
-						}
-					}
-				} elseif ($n <= 1913927423) {
-					return 'willcom';
-				} else {
-					if ($n < 1913927424) {
-						if ($n >= 1913927168 and $n <= 1913927679) {
-							return 'willcom';
-						}
-					} elseif ($n <= 1913927935) {
-						return 'willcom';
-					} else {
-						if ($n < 1913927680) {
-						} elseif ($n <= 1913928191) {
-							return 'willcom';
-						} else {
-							if ($n >= 1913927936 and $n <= 1913928447) {
-								return 'willcom';
-							}
-						}
-					}
-				}
-			} elseif ($n <= 1913928703) {
-				return 'willcom';
-			} else {
-				if ($n < 1913929472) {
-					if ($n < 1913928704) {
-						if ($n >= 1913928448 and $n <= 1913928959) {
-							return 'willcom';
-						}
-					} elseif ($n <= 1913929215) {
-						return 'willcom';
-					} else {
-						if ($n < 1913928960) {
-						} elseif ($n <= 1913929471) {
-							return 'willcom';
-						} else {
-							if ($n >= 1913929216 and $n <= 1913929727) {
-								return 'willcom';
-							}
-						}
-					}
-				} elseif ($n <= 1913929983) {
-					return 'willcom';
-				} else {
-					if ($n < 1913929984) {
-						if ($n >= 1913929728 and $n <= 1913930239) {
-							return 'willcom';
-						}
-					} elseif ($n <= 1913930495) {
-						return 'willcom';
-					} else {
-						if ($n < 1913930240) {
-						} elseif ($n <= 1913930751) {
-							return 'willcom';
-						} else {
-							if ($n >= 1913930496 and $n <= 1913930751) {
-								return 'willcom';
-							}
-						}
-					}
-				}
-			}
-		}
-	} elseif ($n <= 1914044191) {
-		return 'willcom';
-	} else {
-		if ($n < 3414870784) {
-			if ($n < 2037376768) {
-				if ($n < 1990165664) {
-					if ($n < 1989727936) {
-						if ($n >= 1914044160 and $n <= 1914044191) {
-							return 'willcom';
-						}
-					} elseif ($n <= 1989727999) {
-						return 'au';
-					} else {
-						if ($n >= 1990165248 and $n <= 1990165375) {
-							return 'au';
-						}
-					}
-				} elseif ($n <= 1990165695) {
-					return 'au';
-				} else {
-					if ($n < 1990165952) {
-						if ($n >= 1990165760 and $n <= 1990165887) {
-							return 'au';
-						}
-					} elseif ($n <= 1990166015) {
-						return 'au';
-					} else {
-						if ($n < 2037375744) {
-						} elseif ($n <= 2037375871) {
-							return 'au';
-						} else {
-							if ($n >= 2037375904 and $n <= 2037375935) {
-								return 'au';
-							}
-						}
-					}
-				}
-			} elseif ($n <= 2037376895) {
-				return 'au';
-			} else {
-				if ($n < 2098989824) {
-					if ($n < 2070736352) {
-						if ($n >= 2070736128 and $n <= 2070736159) {
-							return 'softbank';
-						}
-					} elseif ($n <= 2070736383) {
-						return 'softbank';
-					} else {
-						if ($n < 2089987584) {
-						} elseif ($n <= 2089988095) {
-							return 'docomo';
-						} else {
-							if ($n >= 2098987008 and $n <= 2098989311) {
-								return 'willcom';
-							}
-						}
-					}
-				} elseif ($n <= 2098991615) {
-					return 'willcom';
-				} else {
-					if ($n < 3405602816) {
-						if ($n >= 3404050432 and $n <= 3404051455) {
-							return 'docomo';
-						}
-					} elseif ($n <= 3405602847) {
-						return 'softbank';
-					} else {
-						if ($n < 3405603040) {
-						} elseif ($n <= 3405603071) {
-							return 'softbank';
-						} else {
-							if ($n >= 3414864896 and $n <= 3414865407) {
-								return 'docomo';
-							}
-						}
-					}
-				}
-			}
-		} elseif ($n <= 3414871039) {
-			return 'docomo';
-		} else {
-			if ($n < 3548299392) {
-				if ($n < 3534288384) {
-					if ($n < 3532785600) {
-						if ($n >= 3532169472 and $n <= 3532169727) {
-							return 'docomo';
-						}
-					} elseif ($n <= 3532785663) {
-						return 'softbank';
-					} else {
-						if ($n < 3533263872) {
-						} elseif ($n <= 3533264127) {
-							return 'docomo';
-						} else {
-							if ($n >= 3533264384 and $n <= 3533264895) {
-								return 'docomo';
-							}
-						}
-					}
-				} elseif ($n <= 3534288895) {
-					return 'willcom';
-				} else {
-					if ($n < 3534684544) {
-						if ($n >= 3534314496 and $n <= 3534316543) {
-							return 'willcom';
-						}
-					} elseif ($n <= 3534684671) {
-						return 'softbank';
-					} else {
-						if ($n < 3538321632) {
-						} elseif ($n <= 3538321647) {
-							return 'au';
-						} else {
-							if ($n >= 3541231616 and $n <= 3541233663) {
-								return 'willcom';
-							}
-						}
-					}
-				}
-			} elseif ($n <= 3548299519) {
-				return 'willcom';
-			} else {
-				if ($n < 3682439424) {
-					if ($n < 3681328384) {
-						if ($n >= 3681288704 and $n <= 3681292287) {
-							return 'willcom';
-						}
-					} elseif ($n <= 3681328511) {
-						return 'au';
-					} else {
-						if ($n < 3681328640) {
-						} elseif ($n <= 3681328671) {
-							return 'au';
-						} else {
-							if ($n >= 3681328680 and $n <= 3681328687) {
-								return 'au';
-							}
-						}
-					}
-				} elseif ($n <= 3682439551) {
-					return 'au';
-				} else {
-					if ($n < 3682440192) {
-						if ($n >= 3682439680 and $n <= 3682439695) {
-							return 'au';
-						}
-					} elseif ($n <= 3682440319) {
-						return 'au';
-					} else {
-						if ($n < 3715563520) {
-						} elseif ($n <= 3715566079) {
-							return 'willcom';
-						} else {
-							if ($n >= 3724885632 and $n <= 3724886015) {
-								return 'au';
-							}
-						}
-					}
-				}
-			}
-		}
-	}
-
 	return 'pc';
 }
 
@@ -2721,11 +2343,6 @@ function freo_mail($to, $subject, $message, $headers = array(), $files = array()
 
 	$subject = mb_convert_kana(freo_unify($subject), 'KV', 'UTF-8');
 	$message = mb_convert_kana(freo_unify($message), 'KV', 'UTF-8');
-
-	if (FREO_PICTOGRAM_MODE) {
-		$subject = freo_pictogram_except($subject);
-		$message = freo_pictogram_except($message);
-	}
 
 	//エンコード
 	$subject = mb_convert_encoding($subject, 'JIS', 'UTF-8');

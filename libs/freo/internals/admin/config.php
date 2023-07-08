@@ -348,11 +348,7 @@ function freo_main()
 
 								if ($freo->agent['type'] == 'mobile') {
 									$data .= '<input type="text" name="config[data][' . $name . ']" size="5" value="' . $value . '"';
-									if ($freo->agent['career'] == 'docomo') {
-										$data .= ' style="-wap-input-format:&quot;*&lt;ja:n&gt;&quot;;"';
-									} else {
-										$data .= ' istyle="4" format="*N" mode="numeric"';
-									}
+									$data .= ' istyle="4" format="*N" mode="numeric"';
 									$data .= ' />';
 								} elseif ($freo->agent['type'] == 'iphone') {
 									$data .= '<input type="text" name="config[data][' . $name . ']" size="5" value="' . $value . '" />';
