@@ -1,0 +1,14 @@
+{
+	"name": "PHP",
+
+	// Using Docker Compose
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/workspace",
+
+	// Open Forward Ports
+	"forwardPorts": [8080],
+
+	// instead root
+	"remoteUser": "vscode"
+}
