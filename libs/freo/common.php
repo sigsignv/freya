@@ -165,9 +165,6 @@ function freo_agent()
 	//コンテンツタイプ取得
 	$freo->agent['content'] = 'application/xhtml+xml';
 
-	//文字コード取得
-	$freo->agent['charset'] = 'utf-8';
-
 	//フォームメソッド取得
 	$freo->agent['method'] = 'post';
 
@@ -204,14 +201,6 @@ function freo_normalize()
 	$_REQUEST = freo_unify($_REQUEST);
 	$_SERVER  = freo_unify($_SERVER);
 	$_COOKIE  = freo_unify($_COOKIE);
-
-	//文字コード変換
-	if ($freo->agent['charset'] == 'sjis') {
-		$_GET     = freo_convert($_GET);
-		$_POST    = freo_convert($_POST);
-		$_REQUEST = freo_convert($_REQUEST);
-		$_SERVER  = freo_convert($_SERVER);
-	}
 
 	//POSTデータ設定
 	if ($freo->agent['method'] == 'get' and isset($_GET['freo']['method']) and $_GET['freo']['method'] == 'post') {
@@ -1116,11 +1105,7 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 	} else {
 		$content = $freo->agent['content'];
 	}
-	if ($freo->agent['charset'] == 'sjis') {
-		$charset = 'Shift_JIS';
-	} else {
-		$charset = 'UTF-8';
-	}
+	$charset = 'UTF-8';
 
 	header('Content-Type: ' . $content . '; charset=' . $charset);
 
@@ -1132,10 +1117,6 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 	//内容出力
 	$output = $freo->smarty->fetch($template, $id);
 	$output = freo_cleanup($output);
-
-	if ($freo->agent['charset'] == 'sjis') {
-		$output = freo_convert($output, 'SJIS-WIN', 'UTF-8');
-	}
 
 	echo $output;
 
@@ -1317,18 +1298,6 @@ function freo_unify($data)
 	$data = preg_replace("/\r/", "\n", $data);
 
 	return $data;
-}
-
-/* 文字コード変換 */
-function freo_convert($data, $to_encoding = 'UTF-8', $from_encoding = 'UTF-8,SJIS-WIN')
-{
-	global $freo;
-
-	if (mb_convert_variables($to_encoding, $from_encoding, $data)) {
-		return $data;
-	} else {
-		return array();
-	}
 }
 
 /* テンプレート割当用クエリー作成 */
