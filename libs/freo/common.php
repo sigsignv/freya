@@ -1136,9 +1136,6 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 	if ($freo->agent['charset'] == 'sjis') {
 		$output = freo_convert($output, 'SJIS-WIN', 'UTF-8');
 	}
-	if (FREO_TRANSFER_MODE) {
-		$output = freo_transfer_execute($output);
-	}
 
 	echo $output;
 
