@@ -1,5 +1,10 @@
 <?php
 
+require_once __DIR__ . '/vendor/autoload.php';
+
+use Monolog\Logger;
+use Monolog\Handler\StreamHandler;
+
 /*********************************************************************
 
  freo | 起動ファイル (2017/09/03)
@@ -24,7 +29,15 @@
 
 *********************************************************************/
 
-require_once 'config.php';
-require_once FREO_MAIN_DIR . 'freo/freo.php';
+$log = new Logger('ErrorLog');
+$log->pushHandler(new StreamHandler(__DIR__ . '/database/errorlog.txt'));
+
+try {
+    $log->debug('Fired.');
+    require_once 'config.php';
+    require_once FREO_MAIN_DIR . 'freo/freo.php';
+} catch (Throwable $ex) {
+    $log->error($ex);
+}
 
 exit;
