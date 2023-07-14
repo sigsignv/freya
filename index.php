@@ -32,12 +32,20 @@ use Monolog\Handler\StreamHandler;
 $log = new Logger('ErrorLog');
 $log->pushHandler(new StreamHandler(__DIR__ . '/database/errorlog.txt'));
 
+set_error_handler(function($errno, $errstr) {
+    global $log;
+
+    $log->alert($errstr);
+});
+
 try {
-    $log->debug('Fired.');
+    $log->debug('Reading config...');
     require_once 'config.php';
+    $log->debug('Start...');
     require_once FREO_MAIN_DIR . 'freo/freo.php';
+    $log->debug('Finished');
 } catch (Throwable $ex) {
-    $log->error($ex);
+    $log->alert($ex);
 }
 
 exit;
