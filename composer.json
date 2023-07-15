@@ -16,5 +16,15 @@
             "Freya\\": "src/"
         }
     },
-    "require": {}
+    "config": {
+        "platform": {
+            "php": "7.2.5"
+        }
+    },
+    "scripts": {
+        "lint": "vendor/bin/phpstan analyze"
+    },
+    "require-dev": {
+        "phpstan/phpstan": "^1.10"
+    }
 }
