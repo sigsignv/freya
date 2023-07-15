@@ -862,13 +862,6 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 {
 	global $freo;
 
-	//読み込み先決定
-	if ($freo->agent['type'] != 'pc' and file_exists($freo->smarty->template_dir . $freo->agent['type'] . 's/')) {
-		$target = $freo->agent['type'] . 's/';
-	} else {
-		$target = null;
-	}
-
 	if (!$error) {
 		//ヘッダ出力確認
 		if (headers_sent()) {
@@ -893,7 +886,7 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 					$path = implode('/', $parameters);
 
 					foreach ($exts as $ext) {
-						if ($freo->smarty->template_exists($target . $template . $path . '.' . $ext)) {
+						if ($freo->smarty->template_exists($template . $path . '.' . $ext)) {
 							$file = $path . '.' . $ext;
 
 							break;
@@ -911,11 +904,11 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 			if (!$file) {
 				foreach (array($_REQUEST['freo']['mode'] . '/', 'default/') as $dir) {
 					foreach ($exts as $ext) {
-						if ($freo->smarty->template_exists($target . $template . $dir . $_REQUEST['freo']['work'] . '.' . $ext)) {
+						if ($freo->smarty->template_exists($template . $dir . $_REQUEST['freo']['work'] . '.' . $ext)) {
 							$file = $dir . $_REQUEST['freo']['work'] . '.' . $ext;
 
 							break;
-						} elseif ($freo->smarty->template_exists($target . $template . $dir . 'default.' . $ext)) {
+						} elseif ($freo->smarty->template_exists($template . $dir . 'default.' . $ext)) {
 							$file = $dir . 'default.' . $ext;
 
 							break;
@@ -930,10 +923,6 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 
 			$template .= $file;
 		}
-	}
-
-	if ($freo->smarty->template_exists($target . $template)) {
-		$template = $target . $template;
 	}
 
 	if (!$error) {
@@ -1023,7 +1012,7 @@ function freo_output($template = null, $id = null, $cache = null, $error = null)
 		}
 	}
 
-	if (preg_match('/^' . preg_quote($target, '/') . 'internals\/(.+)$/', $template, $matches)) {
+	if (preg_match('/^internals\/(.+)$/', $template, $matches)) {
 		$freo->core['template'] = $matches[1];
 	}
 
