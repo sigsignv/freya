@@ -19,25 +19,11 @@ if (isset($_GET['mode']) and $_GET['mode'] == 'checker') {
 }
 
 //最低動作環境確認
-$errors = array();
-
-if (phpversion() < 5) {
-	$errors[] = 'PHP5が利用できません。（現在のバージョンは' . phpversion() . 'です。）';
-}
-if (!class_exists('pdo')) {
-	$errors[] = 'PDOが利用できません。';
-}
-if (!phpversion('pdo_mysql') and !phpversion('pdo_sqlite')) {
-	$errors[] = 'MySQLとSQLiteのいずれも利用できません。';
-}
-if (!function_exists('mb_language')) {
-	$errors[] = 'マルチバイト関数が利用できません。';
-}
-
-if (!empty($errors)) {
-	$errors[] = '現在の環境ではfreoは動作しません。';
-
-	freo_setup_error(implode('', $errors));
+require __DIR__ . '/../../src/Setup.php';
+try {
+	Freya\Setup::checkRequire();
+} catch (Exception $ex) {
+	freo_setup_error($ex->getMessage());
 }
 
 //設置URLを反映
