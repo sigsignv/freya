@@ -33,3 +33,4 @@ Thumbs.db
 /templates_c/
 
 /vendor/
+/phpstan.neon

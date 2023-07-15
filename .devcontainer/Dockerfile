@@ -4,6 +4,9 @@ ARG USERNAME=vscode
 ARG USER_UID=1000
 ARG USER_GID=${USER_UID}
 
+ENV LANG=C.UTF-8
+ENV TZ=Asia/Tokyo
+
 # user/group
 RUN groupadd -g ${USER_GID} ${USERNAME} \
  && useradd -u ${USER_UID} -g ${USER_GID} -G adm,sudo -m -s /bin/bash ${USERNAME}
@@ -25,7 +28,9 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         netbase \
         openssh-client \
         patch \
+        php-apcu \
         php-cli \
+        php-curl \
         php-sqlite3 \
         publicsuffix \
         sqlite3 \
