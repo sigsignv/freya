@@ -168,9 +168,6 @@ function freo_agent()
 	//フォームメソッド取得
 	$freo->agent['method'] = 'post';
 
-	//固体識別情報取得
-	$freo->agent['serial'] = null;
-
 	return;
 }
 
@@ -392,25 +389,6 @@ function freo_user()
 	//認証フラグ
 	$user_flag = false;
 
-	//固体識別情報で認証
-	if (!$freo->user['id'] and $freo->agent['serial']) {
-		$stmt = $freo->pdo->prepare('SELECT id, authority FROM ' . FREO_DATABASE_PREFIX . 'users WHERE approved = \'yes\' AND serial = :serial');
-		$stmt->bindValue(':serial', md5($freo->agent['serial']));
-		$flag = $stmt->execute();
-		if (!$flag) {
-			freo_error($stmt->errorInfo());
-		}
-
-		if ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
-			$freo->user['id']        = $data['id'];
-			$freo->user['authority'] = $data['authority'];
-		}
-
-		if ($freo->user['id']) {
-			$user_flag = true;
-		}
-	}
-
 	//Cookieで認証
 	if (!$freo->user['id'] and !empty($_COOKIE['freo']['session'])) {
 		$stmt = $freo->pdo->prepare('SELECT id, authority FROM ' . FREO_DATABASE_PREFIX . 'users WHERE approved = \'yes\' AND session = :session');
@@ -458,15 +436,7 @@ function freo_user()
 		}
 
 		if ($freo->user['id']) {
-			if ($freo->agent['serial']) {
-				$stmt = $freo->pdo->prepare('UPDATE ' . FREO_DATABASE_PREFIX . 'users SET serial = :serial WHERE id = :user_id');
-				$stmt->bindValue(':serial',  md5($freo->agent['serial']));
-				$stmt->bindValue(':user_id', $freo->user['id']);
-				$flag = $stmt->execute();
-				if (!$flag) {
-					freo_error($stmt->errorInfo());
-				}
-			} elseif ($_REQUEST['freo']['session'] == 'keep') {
+			if ($_REQUEST['freo']['session'] == 'keep') {
 				$session = uniqid(rand(), true);
 
 				freo_setcookie('freo[session]', $session, time() + FREO_COOKIE_EXPIRE);
@@ -486,23 +456,14 @@ function freo_user()
 
 	//認証解除
 	if ($freo->user['id'] and $_REQUEST['freo']['session'] == 'logout') {
-		if ($freo->agent['serial']) {
-			$stmt = $freo->pdo->prepare('UPDATE ' . FREO_DATABASE_PREFIX . 'users SET serial = NULL WHERE id = :user_id');
-			$stmt->bindValue(':user_id', $freo->user['id']);
-			$flag = $stmt->execute();
-			if (!$flag) {
-				freo_error($stmt->errorInfo());
-			}
-		} else {
-			$stmt = $freo->pdo->prepare('UPDATE ' . FREO_DATABASE_PREFIX . 'users SET session = NULL WHERE id = :user_id');
-			$stmt->bindValue(':user_id', $freo->user['id']);
-			$flag = $stmt->execute();
-			if (!$flag) {
-				freo_error($stmt->errorInfo());
-			}
-
-			freo_setcookie('freo[session]', null);
+		$stmt = $freo->pdo->prepare('UPDATE ' . FREO_DATABASE_PREFIX . 'users SET session = NULL WHERE id = :user_id');
+		$stmt->bindValue(':user_id', $freo->user['id']);
+		$flag = $stmt->execute();
+		if (!$flag) {
+			freo_error($stmt->errorInfo());
 		}
+
+		freo_setcookie('freo[session]', null);
 
 		$freo->user = array(
 			'id'        => null,
