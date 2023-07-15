@@ -17,7 +17,8 @@
 			"extensions": [
 				"ms-azuretools.vscode-docker",          // Docker
 				"EditorConfig.EditorConfig",            // EditorConfig for VS Code
-				"bmewburn.vscode-intelephense-client"   // PHP Intelephense
+				"bmewburn.vscode-intelephense-client",  // PHP Intelephense
+				"neilbrayfield.php-docblocker"          // PHP DocBlocker
 			],
             "settings": {
                 "php.suggest.basic": false,
