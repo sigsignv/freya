@@ -15,9 +15,14 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-azuretools.vscode-docker",  // Docker
-				"EditorConfig.EditorConfig"     // EditorConfig for VS Code
-			]
+				"ms-azuretools.vscode-docker",          // Docker
+				"EditorConfig.EditorConfig",            // EditorConfig for VS Code
+				"bmewburn.vscode-intelephense-client"   // PHP Intelephense
+			],
+            "settings": {
+                "php.suggest.basic": false,
+                "php.validate.enable": false
+            }
 		}
 	}
 }
