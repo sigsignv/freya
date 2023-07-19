@@ -376,24 +376,8 @@ function freo_setup_error($message)
 		$message = $pdo_message;
 	}
 
-	echo "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n";
-	echo "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Strict//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd\">\n";
-	echo "<html xmlns=\"http://www.w3.org/1999/xhtml\" xml:lang=\"ja\" lang=\"ja\" dir=\"ltr\">\n";
-	echo "<head>\n";
-	echo "<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n";
-	echo "<title>エラーが発生しました</title>\n";
-
-	if (file_exists(FREO_CSS_DIR . 'common.css')) {
-		echo "<link rel=\"stylesheet\" href=\"" . FREO_CSS_DIR . "common.css\" type=\"text/css\" media=\"all\" />\n";
-	}
-
-	echo "</head>\n";
-	echo "<body>\n";
-	echo "<h1>freo</h1>\n";
-	echo "<h2>エラーが発生しました</h2>\n";
-	echo "<p>" . $message . "</p>\n";
-	echo "</body>\n";
-	echo "</html>\n";
+	$response = Freya\Setup::showError($message);
+	$response->send();
 
 	exit;
 }

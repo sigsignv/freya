@@ -26,5 +26,8 @@
     },
     "require-dev": {
         "phpstan/phpstan": "^1.10"
+    },
+    "require": {
+        "symfony/http-foundation": "^5.4"
     }
 }
