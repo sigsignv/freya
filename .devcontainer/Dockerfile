@@ -32,6 +32,7 @@ RUN export DEBIAN_FRONTEND=noninteractive \
         php-cli \
         php-curl \
         php-sqlite3 \
+        php-xml \
         publicsuffix \
         sqlite3 \
         sudo \
