@@ -2,6 +2,9 @@
 
 use PHPUnit\Framework\TestCase;
 
+/**
+ * @backupGlobals true
+ */
 final class VersionTest extends TestCase
 {
     protected function setUp(): void
