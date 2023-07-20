@@ -12,7 +12,7 @@ final class VersionTest extends TestCase
         require_once __DIR__ . '/../../libs/freo/version.php';
     }
 
-    public function testVersion(): void 
+    public function testVersion(): void
     {
         $this->assertTrue(defined('FREO_VERSION'));
     }
