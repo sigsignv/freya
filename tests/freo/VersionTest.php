@@ -3,7 +3,7 @@
 use PHPUnit\Framework\TestCase;
 
 /**
- * @backupGlobals true
+ * @backupGlobals enabled
  */
 final class VersionTest extends TestCase
 {
