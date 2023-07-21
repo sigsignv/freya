@@ -22,9 +22,11 @@
         }
     },
     "scripts": {
-        "lint": "vendor/bin/phpstan analyze"
+        "lint": "vendor/bin/phpstan analyze",
+        "test": "vendor/bin/phpunit"
     },
     "require-dev": {
-        "phpstan/phpstan": "^1.10"
+        "phpstan/phpstan": "^1.10",
+        "phpunit/phpunit": "^8"
     }
 }
