@@ -163,7 +163,7 @@ function freo_agent()
 	}
 
 	//コンテンツタイプ取得
-	$freo->agent['content'] = 'application/xhtml+xml';
+	$freo->agent['content'] = 'text/html';
 
 	//文字コード取得
 	$freo->agent['charset'] = 'utf-8';
