@@ -12,11 +12,12 @@
 	"customizations": {
 		"vscode": {
 			"extensions": [
-				"ms-azuretools.vscode-docker",          // Docker
-				"EditorConfig.EditorConfig",            // EditorConfig for VS Code
-				"bmewburn.vscode-intelephense-client",  // PHP Intelephense
-				"neilbrayfield.php-docblocker",         // PHP DocBlocker
-				"MehediDracula.php-namespace-resolver"  // PHP Namespace Resolver
+				"ms-azuretools.vscode-docker",
+				"EditorConfig.EditorConfig",
+				"bmewburn.vscode-intelephense-client",
+				"neilbrayfield.php-docblocker",
+				"MehediDracula.php-namespace-resolver",
+				"mrmlnc.vscode-apache"
 			],
 			"settings": {
 				"php.suggest.basic": false,
