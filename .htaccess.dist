@@ -1,0 +1,7 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+
+  # Exclude the .git/ and vendor/ directories.
+  RewriteRule ^.git/ - [F]
+  RewriteRule ^vendor/ - [F]
+</IfModule>
