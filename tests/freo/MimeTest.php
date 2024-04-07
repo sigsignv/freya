@@ -2,9 +2,6 @@
 
 use PHPUnit\Framework\TestCase;
 
-/**
- * @backupGlobals enabled
- */
 final class MimeTest extends TestCase
 {
     protected function setUp(): void
@@ -14,6 +11,11 @@ final class MimeTest extends TestCase
 
     public function testMime(): void
     {
-        $this->assertEquals(freo_mime('/path/to/example.atom'), 'application/atom+xml');
+        $this->assertEquals(freo_mime('/path/to/example.html'), 'text/html');
+    }
+
+    public function testMimeDefault(): void
+    {
+        $this->assertEquals(freo_mime('/path/to/example_without_ext'), 'text/plain');
     }
 }
