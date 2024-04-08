@@ -28,5 +28,8 @@
     "require-dev": {
         "phpstan/phpstan": "^1.10",
         "phpunit/phpunit": "^8"
+    },
+    "require": {
+        "symfony/mime": "^5"
     }
 }
