@@ -9,8 +9,7 @@ require_once __DIR__ . '/../vendor/autoload.php';
 class Compat {
     public static function getContentType(string $path): string
     {
-        // Todo: Change the Content-Type to 'application/octet-stream'
-        $unknown = 'text/plain';
+        $unknown = 'application/octet-stream';
 
         $ext = pathinfo($path, PATHINFO_EXTENSION);
         if ($ext === '') {

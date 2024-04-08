@@ -16,6 +16,6 @@ final class MimeTest extends TestCase
 
     public function testMimeDefault(): void
     {
-        $this->assertEquals(freo_mime('/path/to/example_without_ext'), 'text/plain');
+        $this->assertEquals(freo_mime('/path/to/example_without_ext'), 'application/octet-stream');
     }
 }
