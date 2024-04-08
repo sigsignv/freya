@@ -409,21 +409,7 @@ function freo_user()
 
 	//固体識別情報で認証
 	if (!$freo->user['id'] and $freo->agent['serial']) {
-		$stmt = $freo->pdo->prepare('SELECT id, authority FROM ' . FREO_DATABASE_PREFIX . 'users WHERE approved = \'yes\' AND serial = :serial');
-		$stmt->bindValue(':serial', md5($freo->agent['serial']));
-		$flag = $stmt->execute();
-		if (!$flag) {
-			freo_error($stmt->errorInfo());
-		}
-
-		if ($data = $stmt->fetch(PDO::FETCH_ASSOC)) {
-			$freo->user['id']        = $data['id'];
-			$freo->user['authority'] = $data['authority'];
-		}
-
-		if ($freo->user['id']) {
-			$user_flag = true;
-		}
+		// Do nothing
 	}
 
 	//Cookieで認証
@@ -474,13 +460,7 @@ function freo_user()
 
 		if ($freo->user['id']) {
 			if ($freo->agent['serial']) {
-				$stmt = $freo->pdo->prepare('UPDATE ' . FREO_DATABASE_PREFIX . 'users SET serial = :serial WHERE id = :user_id');
-				$stmt->bindValue(':serial',  md5($freo->agent['serial']));
-				$stmt->bindValue(':user_id', $freo->user['id']);
-				$flag = $stmt->execute();
-				if (!$flag) {
-					freo_error($stmt->errorInfo());
-				}
+				// Do nothing
 			} elseif ($_REQUEST['freo']['session'] == 'keep') {
 				$session = uniqid(rand(), true);
 
@@ -502,12 +482,7 @@ function freo_user()
 	//認証解除
 	if ($freo->user['id'] and $_REQUEST['freo']['session'] == 'logout') {
 		if ($freo->agent['serial']) {
-			$stmt = $freo->pdo->prepare('UPDATE ' . FREO_DATABASE_PREFIX . 'users SET serial = NULL WHERE id = :user_id');
-			$stmt->bindValue(':user_id', $freo->user['id']);
-			$flag = $stmt->execute();
-			if (!$flag) {
-				freo_error($stmt->errorInfo());
-			}
+			// Do nothing
 		} else {
 			$stmt = $freo->pdo->prepare('UPDATE ' . FREO_DATABASE_PREFIX . 'users SET session = NULL WHERE id = :user_id');
 			$stmt->bindValue(':user_id', $freo->user['id']);
