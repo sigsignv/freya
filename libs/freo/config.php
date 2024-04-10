@@ -16,9 +16,6 @@ define('FREO_INITIALIZE_MODE', true);
 //ルーティングの利用(true ... 利用する / false ... 利用しない)
 define('FREO_ROUTING_MODE', false);
 
-//セッション自動付加の利用(true ... 利用する / false ... 利用しない)
-define('FREO_TRANSFER_MODE', true);
-
 //対応プログラムとテンプレートが無いときの404エラーの利用(true ... 利用する / false ... 利用しない)
 define('FREO_ERROR_MODE', true);
 

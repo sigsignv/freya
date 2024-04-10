@@ -24,9 +24,6 @@ if (FREO_INITIALIZE_MODE) {
 if (FREO_ROUTING_MODE) {
 	require_once FREO_MAIN_DIR . 'freo/routing.php';
 }
-if (FREO_TRANSFER_MODE) {
-	require_once FREO_MAIN_DIR . 'freo/transfer.php';
-}
 
 //セッション開始
 freo_session();
